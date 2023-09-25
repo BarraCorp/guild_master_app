@@ -1,26 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <TApp>
+    <TAppShell>
+      <template v-slot:header-right>
+        <TIcon name="fa-bell" class="mr-4" color="black" regular button />
+        <TIcon name="fa-user" color="black" regular button />
+        Diovanni Souza
+        <TIcon name="fa-chevron-down" color="black" regular button />
+      </template>
+      <router-view />
+    </TAppShell>
+  </TApp>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TApp from '@/components/TApp'
+import TIcon from '@/components/TIcon'
+import TAppShell from '@/shell/TAppShell'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    TApp,
+    TAppShell,
+    TIcon,
+  },
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
