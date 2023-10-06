@@ -77,8 +77,6 @@ export default {
           params[this.config.fatherField] = this.config.father
         }
 
-        console.log(params)
-
         const res = await this.$crud.get(this.config.route, params)
         if (!res) {
           this.$router.push('/login')
