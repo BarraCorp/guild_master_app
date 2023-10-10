@@ -1,4 +1,3 @@
-
 import TApp from '@/components/TApp.vue'
 import TBreadcrumb from '@/components/TBreadcrumb.vue'
 import TButton from '@/components/TButton.vue'
@@ -18,28 +17,31 @@ import TSideBar from '@/components/TSideBar.vue'
 import TTable from '@/components/TTable.vue'
 import TToast from '@/components/TToast.vue'
 
+import TForm from '@/layout/TForm.vue'
+import TCrud from '@/layout/TCrud.vue'
 
 const venus = {
   install(Vue) {
-    Vue.component('TApp',  TApp)
-Vue.component('TBreadcrumb',  TBreadcrumb)
-Vue.component('TButton',  TButton)
-Vue.component('TCard',  TCard)
-Vue.component('TCheckbox',  TCheckbox)
-Vue.component('TContainer',  TContainer)
-Vue.component('TContent',  TContent)
-Vue.component('THeadBar',  THeadBar)
-Vue.component('TIcon',  TIcon)
-Vue.component('TInput',  TInput)
-Vue.component('TInputSearch',  TInputSearch)
-Vue.component('TLoadingBar',  TLoadingBar)
-Vue.component('TMain',  TMain)
-Vue.component('TPagination',  TPagination)
-Vue.component('TSelect',  TSelect)
-Vue.component('TSideBar',  TSideBar)
-Vue.component('TTable',  TTable)
-Vue.component('TToast',  TToast)
-
+    Vue.component('TApp', TApp)
+    Vue.component('TBreadcrumb', TBreadcrumb)
+    Vue.component('TButton', TButton)
+    Vue.component('TCard', TCard)
+    Vue.component('TCheckbox', TCheckbox)
+    Vue.component('TContainer', TContainer)
+    Vue.component('TContent', TContent)
+    Vue.component('THeadBar', THeadBar)
+    Vue.component('TIcon', TIcon)
+    Vue.component('TInput', TInput)
+    Vue.component('TInputSearch', TInputSearch)
+    Vue.component('TLoadingBar', TLoadingBar)
+    Vue.component('TMain', TMain)
+    Vue.component('TPagination', TPagination)
+    Vue.component('TSelect', TSelect)
+    Vue.component('TSideBar', TSideBar)
+    Vue.component('TTable', TTable)
+    Vue.component('TToast', TToast)
+    Vue.component('TForm', TForm)
+    Vue.component('TCrud', TCrud)
   },
 }
 

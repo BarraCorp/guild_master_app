@@ -6,9 +6,9 @@
 export default {
   data: () => ({
     config: {
-      head: 'Campos',
-      breadcrumb: [{ text: 'Home' }, { text: 'Administração' }, { text: 'Campos do Formulário' }],
-      route: 'field',
+      head: 'Planos',
+      breadcrumb: [{ text: 'Home' }, { text: 'Administração' }, { text: 'Plano' }],
+      route: 'plan',
     },
   }),
   mounted() {},

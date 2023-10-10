@@ -3,14 +3,10 @@
 </template>
 
 <script>
-import TForm from '@/layout/TForm'
 export default {
-  components: {
-    TForm,
-  },
   data: () => ({
     config: {
-      head: 'Usuários',
+      head: 'Novo Usuário',
       breadcrumb: [{ text: 'Home' }, { text: 'Administração' }, { text: 'Usuários' }],
       route: 'user',
     },

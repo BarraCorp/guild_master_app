@@ -3,11 +3,7 @@
 </template>
 
 <script>
-import TForm from '@/layout/TForm'
 export default {
-  components: {
-    TForm,
-  },
   data: () => ({
     config: {
       head: 'Formulário',

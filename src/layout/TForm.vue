@@ -26,14 +26,16 @@
           </div>
           <TInput v-model="object[field.name]" :placeholder="field.placeholder" v-if="field.type === 1" />
           <TInput v-model="object[field.name]" :placeholder="field.placeholder" password v-if="field.type === 2" />
+
           <TCheckbox v-model="object[field.name]" :placeholder="field.placeholder" v-if="field.type === 3" />
+
           <TSelect
             v-model="object[field.name]"
             :placeholder="field.placeholder"
             :items="field.database"
             v-if="field.type === 4"
-            itemValue="id"
-            itemText="name"
+            :itemValue="field.itemValue ? field.itemValue : 'id'"
+            :itemText="field.itemKey ? field.itemKey : 'name'"
           />
         </div>
       </div>

@@ -10,10 +10,9 @@ export default {
   },
   data: () => ({
     config: {
-      head: 'Grupo',
-      breadcrumb: [{ text: 'Home' }, { text: 'Administração' }, { text: 'Grupos' }],
-      route: 'group',
-      children: [{ route: 'programs', name: 'Programas' }],
+      head: 'Raças',
+      breadcrumb: [{ text: 'Home' }, { text: 'Database' }, { text: 'Raças' }],
+      route: 'race',
       headers: [
         { text: 'ID', value: 'id', classes: 'w-8' },
         { text: 'Nome', value: 'name' },

@@ -2,7 +2,6 @@
   <div class="w-full flex content-center items-center cursor-pointer px-2" @click="raw = !raw">
     <div :class="[...classes, { 'bg-indigo-600': raw }]"></div>
     <div class="flex-grow">{{ placeholder }}</div>
-    <!-- <input class="border-none focus:outline-none flex-grow p-1 m-1" v-model="raw" :type="password ? 'password' : 'input'" :placeholder="placeholder" /> -->
   </div>
 </template>
 

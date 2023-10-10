@@ -63,7 +63,7 @@ export default {
     headers: [],
     items: [],
     pageConfig: {},
-    perPage: 10,
+    perPage: 12,
     page: 1,
     loading: false,
   }),
@@ -98,7 +98,7 @@ export default {
     },
     add() {
       const route = this.$route.path
-      this.$router.push(`${route}/novo`)
+      this.$router.push(`${route}/new`)
     },
     edit(id) {
       const route = this.$route.path

@@ -70,19 +70,34 @@ export default {
     navbar: true,
     menuModel: [
       {
-        category: 'Guilda',
+        category: 'Core Master',
         status: false,
         menus: [
-          { text: 'Home', to: '/', icon: 'fa-user' },
-          { text: 'Usuários', to: '/usuarios', icon: 'fa-user' },
-          { text: 'Planos', to: '/plan', icon: 'fa-user' },
-          { text: 'Grupos', to: '/group', icon: 'fa-user' },
-          { text: 'Programas', to: '/program', icon: 'fa-user' },
-          { text: 'Formulário', to: '/form', icon: 'fa-user' },
+          { text: 'Times', to: '/', icon: 'fa-people-group' },
+          { text: 'Membros', to: '/', icon: 'fa-person' },
         ],
       },
       {
-        category: 'Fundação',
+        category: 'Minha Conta',
+        status: false,
+        menus: [
+          { text: 'Perfil', to: '/', icon: 'fa-user' },
+          { text: 'Personagens', to: '/', icon: 'fa-person-rays' },
+          { text: 'Financeiro', to: '/', icon: 'fa-receipt' },
+        ],
+      },
+      {
+        category: 'WoW Database',
+        status: false,
+        menus: [
+          { text: 'Raças', to: '/race', icon: 'fa-user' },
+          { text: 'Classes', to: '/class', icon: 'fa-person-rays' },
+          { text: 'Servidores', to: '/server', icon: 'fa-receipt' },
+          { text: 'Guilds', to: '/guild', icon: 'fa-receipt' },
+        ],
+      },
+      {
+        category: 'Administração',
         status: false,
         menus: [
           { text: 'Usuários', to: '/usuarios', icon: 'fa-user' },

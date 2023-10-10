@@ -10,16 +10,19 @@ export default {
   },
   data: () => ({
     config: {
-      head: 'Grupo',
-      breadcrumb: [{ text: 'Home' }, { text: 'Administração' }, { text: 'Grupos' }],
-      route: 'group',
-      children: [{ route: 'programs', name: 'Programas' }],
+      head: 'Grupos do Usuário',
+      breadcrumb: [{ text: 'Home' }, { text: 'Administração' }, { text: 'Usuários' }, { text: 'Grupos' }],
+      route: 'userGroup',
+      fatherField: 'idUser',
+      father: null,
       headers: [
         { text: 'ID', value: 'id', classes: 'w-8' },
         { text: 'Nome', value: 'name' },
       ],
     },
   }),
-  mounted() {},
+  mounted() {
+    this.config.father = this.$route.params.idFather
+  },
 }
 </script>
