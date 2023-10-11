@@ -10,9 +10,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50" v-for="(item, i) in raw" :key="i">
+        <tr
+          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50"
+          v-for="(item, i) in raw"
+          :key="i"
+        >
           <td class="px-6 py-4" v-for="(head, j) in rawHeader" :key="j" :class="head.classes">
-            <slot :name="`item-${head.value}`" v-bind="item">{{ item[head.value] }}</slot>
+            <slot :name="`item-${head.value}`" v-bind="{ item, head }">{{ item[head.value] }}</slot>
           </td>
         </tr>
       </tbody>

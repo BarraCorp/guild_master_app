@@ -14,11 +14,11 @@ import TMain from '@/components/TMain.vue'
 import TPagination from '@/components/TPagination.vue'
 import TSelect from '@/components/TSelect.vue'
 import TSideBar from '@/components/TSideBar.vue'
+import TStatus from '@/components/TStatus.vue'
 import TTable from '@/components/TTable.vue'
 import TToast from '@/components/TToast.vue'
-
-import TForm from '@/layout/TForm.vue'
 import TCrud from '@/layout/TCrud.vue'
+import TForm from '@/layout/TForm.vue'
 
 const venus = {
   install(Vue) {
@@ -38,10 +38,11 @@ const venus = {
     Vue.component('TPagination', TPagination)
     Vue.component('TSelect', TSelect)
     Vue.component('TSideBar', TSideBar)
+    Vue.component('TStatus', TStatus)
     Vue.component('TTable', TTable)
     Vue.component('TToast', TToast)
-    Vue.component('TForm', TForm)
     Vue.component('TCrud', TCrud)
+    Vue.component('TForm', TForm)
   },
 }
 

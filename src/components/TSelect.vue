@@ -10,7 +10,7 @@
       </div>
     </div>
     <Transition>
-      <TCard class="w-full shadow-md absolute mt-1 top-full z-10" v-if="open">
+      <TCard class="w-full shadow-md absolute mt-1 top-full z-10 overflow-y-scroll max-h-40" v-if="open">
         <div
           v-for="(item, i) in items"
           :key="i"
@@ -38,14 +38,8 @@ export default {
       default: '',
     },
     items: Array,
-    itemText: {
-      type: String,
-      default: 'text',
-    },
-    itemValue: {
-      type: String,
-      default: 'value',
-    },
+    itemText: String,
+    itemValue: String,
   },
   data: () => ({
     raw: null,
@@ -57,8 +51,10 @@ export default {
       this.$emit('update:modelValue', this.raw)
     },
     modelValue(newVal) {
-      this.raw = newVal
-      this.defineItem()
+      if (newVal != this.raw) {
+        this.raw = newVal
+        this.defineItem()
+      }
     },
   },
   methods: {
@@ -85,7 +81,11 @@ export default {
     },
     defineItem() {
       const started = this.items.find((el) => {
-        return el[this.itemValue] === this.modelValue
+        if (this.itemValue) {
+          return el[this.itemValue] === this.modelValue
+        } else {
+          return el === this.modelValue
+        }
       })
       this.setValue(started)
     },

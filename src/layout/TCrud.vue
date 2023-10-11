@@ -6,7 +6,11 @@
           <p class="text-2xl">{{ config.head }}</p>
           <TBreadcrumb :list="config.breadcrumb" class="my-4" />
         </div>
-        <div class="w-32 text-right">
+        <div class="text-right flex">
+          <TButton class="px-3 mr-2" @click="back()" v-if="idFather">
+            <TIcon name="fa-angles-left fa-sm mr-2" regular />
+            Voltar
+          </TButton>
           <TButton class="px-3" @click="add()">
             <TIcon name="fa-plus fa-sm mr-2" regular />
             Adicionar
@@ -17,13 +21,20 @@
     <div class="flex-grow">
       <Transition>
         <TTable :headers="headers" :items="items" class="h-full" :loading="loading">
-          <template #item-action="item">
+          <template v-for="head in config.headers" #[`item-${head.value}`]="{ item }">
+            <slot :name="`item-${head.value}`" v-bind="{ item, head }"></slot>
+          </template>
+
+          <template #item-action="{ item }">
             <div class="exibe-menu">
               <TIcon name="fa-bars" color="black" regular button @click="item.id" />
               <div class="absolute right-8 sub-menu">
                 <TCard class="fh-full p-2 shadow-md">
                   <div v-for="(sub, j) in config.children" :key="j">
-                    <TButton class="px-3 mb-2" @click="subRoute(item.id, sub)" block> {{ sub.name }} </TButton>
+                    <TButton class="px-3 mb-2" @click="subRoute(item.id, sub)" block>
+                      <TIcon :name="`${sub.icon} fa-sm mr-1`" regular v-if="sub.icon" />
+                      {{ sub.name }}
+                    </TButton>
                   </div>
                   <TButton class="px-3 mb-2" @click="edit(item.id)" block>
                     <TIcon name="fa-pen-to-square fa-sm mr-1" regular />
@@ -58,6 +69,9 @@ export default {
   },
   computed: {
     ...mapState(['user']),
+    idFather() {
+      return this.$route?.params?.idFather
+    },
   },
   data: () => ({
     headers: [],
@@ -85,7 +99,7 @@ export default {
         }
         this.items = res.data
         this.headers = []
-        this.headers = this.config.headers || [{ text: 'ID', value: 'id', classes: 'text-left' }]
+        this.headers = [...this.config.headers] || [{ text: 'ID', value: 'id', classes: 'text-left' }]
         if (
           !this.headers.find((el) => {
             return el.value === 'action'
@@ -119,6 +133,9 @@ export default {
           color: '#14532do9',
         })
       }
+    },
+    back() {
+      this.$router.go(-1)
     },
   },
   mounted() {

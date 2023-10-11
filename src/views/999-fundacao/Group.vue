@@ -13,7 +13,7 @@ export default {
       head: 'Grupo',
       breadcrumb: [{ text: 'Home' }, { text: 'Administração' }, { text: 'Grupos' }],
       route: 'group',
-      children: [{ route: 'programs', name: 'Programas' }],
+      children: [{ route: 'acl', name: 'ACL', icon: 'fa-list-check' }],
       headers: [
         { text: 'ID', value: 'id', classes: 'w-8' },
         { text: 'Nome', value: 'name' },

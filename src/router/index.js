@@ -153,11 +153,41 @@ const routes = [
     component: () => import('../views/999-fundacao/GroupForm.vue'),
     props: true,
   },
+  // Acesso dos Grupos
+  {
+    path: '/group/:idFather/acl',
+    name: 'ACL',
+    component: () => import('../views/999-fundacao/ACL.vue'),
+    props: true,
+  },
+  {
+    path: '/group/:idFather/acl/new',
+    name: 'ACL Novo',
+    component: () => import('../views/999-fundacao/ACLForm.vue'),
+    props: true,
+  },
+  {
+    path: '/group/:idFather/acl/edit/:id',
+    name: 'ACL Edit',
+    component: () => import('../views/999-fundacao/ACLForm.vue'),
+    props: true,
+  },
   // Programas
   {
     path: '/program',
     name: 'Program',
     component: () => import('../views/999-fundacao/Program.vue'),
+  },
+  {
+    path: '/program/new',
+    name: 'Novo Program',
+    component: () => import('../views/999-fundacao/ProgramForm.vue'),
+  },
+  {
+    path: '/program/edit/:id',
+    name: 'Edit Program',
+    component: () => import('../views/999-fundacao/ProgramForm.vue'),
+    props: true,
   },
 ]
 

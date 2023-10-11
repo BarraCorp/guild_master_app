@@ -13,7 +13,7 @@ export default {
       head: 'Usuários',
       breadcrumb: [{ text: 'Home' }, { text: 'Administração' }, { text: 'Usuários' }],
       route: 'user',
-      children: [{ route: 'group', name: 'Grupos' }],
+      children: [{ route: 'group', name: 'Grupos', icon: 'fa-people-group' }],
       headers: [
         { text: 'ID', value: 'id', classes: 'w-8' },
         { text: 'Nome', value: 'name' },
