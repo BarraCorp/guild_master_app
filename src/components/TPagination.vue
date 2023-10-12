@@ -46,14 +46,17 @@ export default {
     },
   },
   mounted() {
+    this.page = this.modelValue
     this.raw = this.config
   },
   watch: {
-    page(value) {
-      this.page = value
-      this.raw = this.config
-      this.raw.actual = value
-    },
+    // modelValue(value) {
+    //   if (value !== this.page) {
+    //     this.page = value
+    //   }
+    //   this.raw = this.config
+    //   this.raw.actual = value
+    // },
     config(value) {
       this.raw = value
     },

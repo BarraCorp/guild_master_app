@@ -14,7 +14,7 @@
       </div>
     </THeadBar>
     <TMain>
-      <TSideBar :active="navbar">
+      <TSideBar v-if="navbar">
         <template #content>
           <div v-for="(menu, j) in menuModel" :key="j">
             <TButton @click="menu.status = !menu.status" block class="mb-1 flex">
@@ -45,24 +45,11 @@
 
 <script>
 import TApp from '@/components/TApp'
-import THeadBar from '@/components/THeadBar'
-import TMain from '@/components/TMain'
-import TSideBar from '@/components/TSideBar'
-import TContent from '@/components/TContent'
-
-import TButton from '@/components/TButton'
-import TIcon from '@/components/TIcon'
 
 export default {
   name: 'App',
   components: {
     TApp,
-    THeadBar,
-    TMain,
-    TSideBar,
-    TContent,
-    TButton,
-    TIcon,
   },
   props: {},
   data: () => ({
@@ -73,8 +60,8 @@ export default {
         category: 'Core Master',
         status: false,
         menus: [
-          { text: 'Times', to: '/', icon: 'fa-people-group' },
-          { text: 'Membros', to: '/', icon: 'fa-person' },
+          { text: 'Times', to: '/team', icon: 'fa-people-group' },
+          { text: 'Membros', to: '/member', icon: 'fa-person' },
         ],
       },
       {
@@ -91,9 +78,9 @@ export default {
         status: false,
         menus: [
           { text: 'Raças', to: '/race', icon: 'fa-user' },
-          { text: 'Classes', to: '/class', icon: 'fa-person-rays' },
-          { text: 'Servidores', to: '/server', icon: 'fa-receipt' },
-          { text: 'Guilds', to: '/guild', icon: 'fa-receipt' },
+          { text: 'Classes', to: '/class', icon: 'fa-hat-wizard' },
+          { text: 'Servidores', to: '/server', icon: 'fa-server' },
+          { text: 'Guilds', to: '/guild', icon: 'fa-users' },
         ],
       },
       {

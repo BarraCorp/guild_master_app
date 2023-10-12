@@ -13,7 +13,7 @@ export default {
       head: 'Formulários',
       breadcrumb: [{ text: 'Home' }, { text: 'Administração' }, { text: 'Formulários' }],
       route: 'form',
-      children: [{ route: 'field', name: 'Campos' }],
+      children: [{ route: 'field', name: 'Campos', icon: 'fa-list-alt' }],
       headers: [
         { text: 'ID', value: 'id', classes: 'w-8' },
         { text: 'Nome', value: 'name' },
