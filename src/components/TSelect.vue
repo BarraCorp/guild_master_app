@@ -1,9 +1,10 @@
 <template>
   <div class="border focus:border-indigo-800 hover:border-indigo-600 bg-white rounded-lg w-full relative">
     <div class="border-none focus:outline-none w-full p-1 m-1 flex">
-      <div class="flex-grow cursor-pointer" cursor-pointer @click="open = !open">
+      <!-- <div class="flex-grow cursor-pointer" @click="open = !open">
         {{ rawText ? rawText : placeholder }}
-      </div>
+      </div> -->
+      <input class="border-none focus:outline-none flex-grow cursor-pointer fake-select" v-model="search" :placeholder="rawPlaceholder" @click="open = !open" />
       <div class="px-2">
         <TIcon :name="[{ 'fa-angles-down': !open }, { 'fa-angles-up': open }, 'fa-sm']" regular @click="open = !open" />
         <TIcon name="fa-user fa-xmark" v-if="raw" @click="clear" button regular />
@@ -11,12 +12,7 @@
     </div>
     <Transition>
       <TCard class="w-full shadow-md absolute mt-1 top-full z-10 overflow-y-scroll max-h-40" v-if="open">
-        <div
-          v-for="(item, i) in items"
-          :key="i"
-          class="hover:bg-gray-50 border-b p-2 cursor-pointer"
-          @click="setValue(item)"
-        >
+        <div v-for="(item, i) in computedItems" :key="i" class="hover:bg-gray-50 border-b p-2 cursor-pointer" @click="setValue(item)">
           <span v-if="typeof item === 'object' && item !== null">
             {{ getText(item) }}
           </span>
@@ -45,7 +41,20 @@ export default {
     raw: null,
     rawText: '',
     open: false,
+    search: null,
+    rawPlaceholder: null,
   }),
+  computed: {
+    computedItems() {
+      if (!this.search) {
+        return this.items
+      }
+      return this.items.filter((el) => {
+        const name = this.getText(el)
+        return name.toLowerCase().includes(this.search.toLowerCase())
+      })
+    },
+  },
   watch: {
     raw() {
       this.$emit('update:modelValue', this.raw)
@@ -66,6 +75,8 @@ export default {
         this.raw = item
         this.rawText = item
       }
+      this.rawPlaceholder = this.rawText
+      this.search = null
       this.open = false
     },
     getText(item) {
@@ -77,6 +88,7 @@ export default {
     },
     clear() {
       this.raw = null
+      this.search = null
       this.rawText = this.placeholder
     },
     defineItem() {
@@ -96,4 +108,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.fake-select::placeholder {
+  color: #000;
+}
+</style>
