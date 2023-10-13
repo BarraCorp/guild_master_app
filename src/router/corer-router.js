@@ -34,6 +34,60 @@ const routes = [
     component: () => import('../views/000-core-master/MemberSocialForm.vue'),
     props: true,
   },
+  {
+    path: '/member/:idFather/character',
+    name: 'Personagens',
+    component: () => import('../views/000-core-master/Character.vue'),
+    props: true,
+  },
+  {
+    path: '/member/:idFather/character/new',
+    name: 'Personagens Novo',
+    component: () => import('../views/000-core-master/CharacterForm.vue'),
+    props: true,
+  },
+  {
+    path: '/member/:idFather/character/edit/:id',
+    name: 'Personagens Edit',
+    component: () => import('../views/000-core-master/CharacterForm.vue'),
+    props: true,
+  },
+
+  // Membros
+  {
+    path: '/team',
+    name: 'Times',
+    component: () => import('../views/000-core-master/Team.vue'),
+  },
+  {
+    path: '/team/new',
+    name: 'Novo Times',
+    component: () => import('../views/000-core-master/TeamForm.vue'),
+  },
+  {
+    path: '/team/edit/:id',
+    name: 'Editar Times',
+    component: () => import('../views/000-core-master/TeamForm.vue'),
+    props: true,
+  },
+  {
+    path: '/team/:idFather/member',
+    name: 'Membros do Time',
+    component: () => import('../views/000-core-master/TeamMember.vue'),
+    props: true,
+  },
+  {
+    path: '/team/:idFather/member/new',
+    name: 'Membros do Time Novo',
+    component: () => import('../views/000-core-master/TeamMemberForm.vue'),
+    props: true,
+  },
+  {
+    path: '/team/:idFather/member/edit/:id',
+    name: 'Membros do Time Edit',
+    component: () => import('../views/000-core-master/TeamMemberForm.vue'),
+    props: true,
+  },
 ]
 
 export default routes

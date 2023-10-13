@@ -13,6 +13,8 @@ export default {
       head: 'Redes Sociais',
       breadcrumb: [{ text: 'Home' }, { text: 'Corer' }, { text: 'Membros' }, { text: 'Redes Sociais' }],
       route: 'memberSocial',
+      fatherField: 'idUser',
+      father: null,
       headers: [
         // { text: 'ID', value: 'id', classes: 'w-8' },
         // { text: 'Nome', value: 'name' },
@@ -21,6 +23,8 @@ export default {
       ],
     },
   }),
-  mounted() {},
+  mounted() {
+    this.config.father = this.$route.params.idFather
+  },
 }
 </script>

@@ -14,7 +14,7 @@ export default {
       breadcrumb: [{ text: 'Home' }, { text: 'Corer' }, { text: 'Membros' }],
       route: 'member',
       children: [
-        { route: 'characters', name: 'Personagens', icon: 'fa-list-alt' },
+        { route: 'character', name: 'Personagens', icon: 'fa-list-alt' },
         { route: 'social', name: 'Social Media', icon: 'fa-list-alt' },
       ],
       headers: [
