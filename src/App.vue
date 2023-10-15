@@ -1,6 +1,6 @@
 <template>
   <TApp>
-    <TAppShell v-if="user">
+    <TAppShell v-if="user && !debug">
       <template v-slot:header-right>
         <TIcon name="fa-bell" class="mr-4" color="black" regular button />
         <TIcon name="fa-user" color="black" regular button />
@@ -9,8 +9,11 @@
       </template>
       <router-view />
     </TAppShell>
-    <router-view v-if="!user" />
+    <TAppShellDebug v-if="user && debug">
+      <router-view />
+    </TAppShellDebug>
 
+    <router-view v-if="!user && !debug" />
     <TToast />
   </TApp>
 </template>
@@ -19,6 +22,7 @@
 import TApp from '@/components/TApp'
 import TIcon from '@/components/TIcon'
 import TAppShell from '@/shell/TAppShell'
+import TAppShellDebug from '@/shell/TAppShellDebug'
 
 import { mapState } from 'vuex'
 
@@ -27,10 +31,17 @@ export default {
   components: {
     TApp,
     TAppShell,
+    TAppShellDebug,
     TIcon,
   },
+  data: () => ({
+    debug: false,
+  }),
   computed: {
     ...mapState(['user']),
+    route() {
+      return this.$route.path
+    },
   },
   methods: {
     start() {
@@ -47,6 +58,15 @@ export default {
   },
   mounted() {
     this.start()
+  },
+  watch: {
+    route() {
+      if (this.route.includes('debug')) {
+        this.debug = true
+      } else {
+        this.debug = false
+      }
+    },
   },
 }
 </script>

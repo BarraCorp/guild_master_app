@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import coreRoutes from './corer-router'
+import debugRoutes from './debug-router'
 
 import Home from '../views/Home.vue'
 
 const routes = [
   ...coreRoutes,
+  ...debugRoutes,
   {
     path: '/',
     name: 'Home',

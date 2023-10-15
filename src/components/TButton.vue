@@ -17,7 +17,7 @@ export default {
     },
   },
   data: () => ({
-    classes: ['items-center', 'p-2', 'cursor-pointer', 'text-white', 'rounded-lg', 'group', 'sidebar-tbutton'],
+    classes: ['items-center', 'p-2', 'cursor-pointer', 'rounded-lg', 'group', 'sidebar-tbutton'],
   }),
   methods: {
     action() {
@@ -32,12 +32,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.sidebar-tbutton {
-  background: var(--button-color);
-}
-.sidebar-tbutton:hover {
-  background: var(--button-hover-color);
-}
-</style>
