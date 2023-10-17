@@ -44,15 +44,20 @@ export default {
     },
   },
   methods: {
-    start() {
+    async start() {
       if (!this.user) {
-        const logged = this.$crud.get('me')
+        const logged = await this.$crud.get('me')
+        console.log(logged, 'aqui')
+        if (logged && logged.response && logged.response.status === 401) {
+          this.$router.push('/login')
+          this.$store.dispatch('setUserInfo', null)
+        }
         if (logged) {
           this.$store.dispatch('setUserInfo', logged)
           this.$router.push('/')
-        } else {
-          this.$router.push('/login')
         }
+        this.$router.push('/login')
+        this.$store.dispatch('setUserInfo', null)
       }
     },
   },

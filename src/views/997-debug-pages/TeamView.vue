@@ -35,15 +35,32 @@
           :trClasses="['bg-stone-800', 'text-yellow-400', 'border-zinc-800']"
           :tdClasses="['hover:bg-stone-700', 'border-zinc-800']"
         >
+          <template #item-mediaAvatar="{ item }">
+            <TRow>
+              <TCol center t12>
+                <div class="rounded-full w-8 h-8 overflow-hidden border-2 border-gray-400">
+                  <img :src="item.mediaAvatar" />
+                </div>
+              </TCol>
+            </TRow>
+          </template>
           <template #item-idClass="{ item }">
-            <div class="rounded-full w-8 h-8 overflow-hidden border-2 border-gray-400">
-              <img :src="getClassImage(item.idClass)" />
-            </div>
+            <TRow>
+              <TCol center t12>
+                <div class="rounded-full w-8 h-8 overflow-hidden border-2 border-gray-400">
+                  <img :src="getClassImage(item.idClass)" />
+                </div>
+              </TCol>
+            </TRow>
           </template>
           <template #item-idRace="{ item }">
-            <div class="rounded-full w-8 h-8 overflow-hidden border-2 border-gray-400">
-              <img :src="getRaceImage(item)" />
-            </div>
+            <TRow>
+              <TCol center t12>
+                <div class="rounded-full w-8 h-8 overflow-hidden border-2 border-gray-400">
+                  <img :src="getRaceImage(item)" />
+                </div>
+              </TCol>
+            </TRow>
           </template>
         </TTable>
         <div class="h-8 mt-2">
@@ -61,13 +78,13 @@ export default {
     team: {},
     members: [],
     headers: [
-      // { text: 'ID', value: 'id', classes: 'w-8' },
+      { text: '', value: 'mediaAvatar' },
       { text: 'Membro', value: 'memberName' },
       { text: 'Personagem', value: 'name' },
-      // { text: 'Servidor', value: 'serverName' },
+      { text: 'Facção', value: 'faction' },
       { text: 'Classe', value: 'idClass' },
       { text: 'Raça', value: 'idRace' },
-      { text: 'Item Level', value: 'itemLevel' },
+      { text: 'Item Level', value: 'equippedItemLevel' },
     ],
   }),
   methods: {
@@ -99,7 +116,7 @@ export default {
       return require(`@/assets/classes/${id}.png`)
     },
     getRaceImage(item) {
-      return require(`@/assets/races/${item.idRace}-${item.genre}.png`)
+      return require(`@/assets/races/${item.idRace}-${item.gender}.png`)
     },
   },
   async mounted() {

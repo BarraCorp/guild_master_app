@@ -1,34 +1,43 @@
 <template>
   <div class="h-full w-full">
-    <div class="flex w-full mb-5">
-      <div class="flex-grow">
-        <p class="text-3xl mb-4 font-bold">Meus Times</p>
-      </div>
-      <div class="w-64">
+    <TRow class="mb-5" center>
+      <TCol class="flex-grow">
+        <p class="text-3xl font-bold text-yellow-400 uppercase">Meus Times</p>
+      </TCol>
+      <TCol class="w-64" right>
         <TButton class="shadow bg-yellow-400 hover:bg-yellow-600 text-gray-900 font-bold" @click="add()">
           <TIcon name="fa-plus" solid class="mr-2" />
           Criar Time
         </TButton>
-      </div>
-    </div>
+      </TCol>
+    </TRow>
 
-    <div class="flex">
-      <div v-for="(item, i) in teams" :key="i" class="w-3/12 mx-2">
+    <TRow>
+      <TCol t3 v-for="(item, i) in teams" :key="i" class="mx-2">
         <TCard color="#292524" class="overflow-hidden shadow">
           <div class="w-full h-64" :style="`background: url(${item.url ?? 'https://i.imgur.com/yjoYqzG.png'}) center center; background-size: cover`"></div>
           <div class="px-2 p-4">
             <p class="text-3xl mb-2 font-bold text-yellow-400 text-center">{{ item.name }}</p>
             <p class="text-center">{{ item.description }}</p>
-            <div class="pt-4 flex justify-end">
-              <TButton class="shadow bg-yellow-400 hover:bg-yellow-600 text-gray-900 font-bold" @click="edit(item.id)">
-                <TIcon name="fa-gears" solid class="mr-2" />
-                Gerenciar
-              </TButton>
-            </div>
+            <TRow center class="mt-5">
+              <TCol t6>
+                <TIcon name="fa-star" solid class="mr-2" />
+                <TIcon name="fa-star" solid class="mr-2" />
+                <TIcon name="fa-star" solid class="mr-2" />
+                <TIcon name="fa-star" regular class="mr-2" />
+                <TIcon name="fa-star" regular class="mr-2" />
+              </TCol>
+              <TCol t6 right>
+                <TButton class="shadow bg-yellow-400 hover:bg-yellow-600 text-gray-900 font-bold" @click="edit(item.id)">
+                  <TIcon name="fa-gears" solid class="mr-2" />
+                  Gerenciar
+                </TButton>
+              </TCol>
+            </TRow>
           </div>
         </TCard>
-      </div>
-    </div>
+      </TCol>
+    </TRow>
   </div>
 </template>
 

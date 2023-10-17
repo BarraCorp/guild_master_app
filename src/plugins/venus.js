@@ -3,6 +3,7 @@ import TBreadcrumb from '@/components/TBreadcrumb.vue'
 import TButton from '@/components/TButton.vue'
 import TCard from '@/components/TCard.vue'
 import TCheckbox from '@/components/TCheckbox.vue'
+import TCol from '@/components/TCol.vue'
 import TContainer from '@/components/TContainer.vue'
 import TContent from '@/components/TContent.vue'
 import THeadBar from '@/components/THeadBar.vue'
@@ -12,6 +13,7 @@ import TInputSearch from '@/components/TInputSearch.vue'
 import TLoadingBar from '@/components/TLoadingBar.vue'
 import TMain from '@/components/TMain.vue'
 import TPagination from '@/components/TPagination.vue'
+import TRow from '@/components/TRow.vue'
 import TSelect from '@/components/TSelect.vue'
 import TSideBar from '@/components/TSideBar.vue'
 import TStatus from '@/components/TStatus.vue'
@@ -27,6 +29,7 @@ const venus = {
     Vue.component('TButton', TButton)
     Vue.component('TCard', TCard)
     Vue.component('TCheckbox', TCheckbox)
+    Vue.component('TCol', TCol)
     Vue.component('TContainer', TContainer)
     Vue.component('TContent', TContent)
     Vue.component('THeadBar', THeadBar)
@@ -36,6 +39,7 @@ const venus = {
     Vue.component('TLoadingBar', TLoadingBar)
     Vue.component('TMain', TMain)
     Vue.component('TPagination', TPagination)
+    Vue.component('TRow', TRow)
     Vue.component('TSelect', TSelect)
     Vue.component('TSideBar', TSideBar)
     Vue.component('TStatus', TStatus)

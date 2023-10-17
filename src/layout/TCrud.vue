@@ -93,7 +93,7 @@ export default {
         this.loading = true
         const res = await this.$crud.get(this.config.route, { params })
         this.loading = false
-        if (!res || (res.response && res.response.status > 400)) {
+        if (!res || (res.response && res.response.status === 401)) {
           this.$router.push('/login')
           this.$store.dispatch('setUserInfo', null)
         }

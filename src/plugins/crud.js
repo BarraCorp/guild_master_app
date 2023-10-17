@@ -4,13 +4,16 @@ import store from '@/store'
 
 axios.defaults.withCredentials = true
 
-const sendError = () => {
+const sendError = (err) => {
   store.dispatch('setToasted', {
     active: true,
     text: 'Tem algo errado aí fera.',
     icon: 'fa-bomb',
     color: '#ff0000',
   })
+  if (err && err.response && err.response.status === 401) {
+    store.dispatch('setUserInfo', null)
+  }
 }
 
 const get = async (route, params = {}) => {
@@ -22,7 +25,7 @@ const get = async (route, params = {}) => {
       return res.data
     })
     .catch((err) => {
-      sendError()
+      sendError(err)
       return err
     })
 

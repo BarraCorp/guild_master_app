@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" :style="`background: ${color};`">
+  <div :class="[...classes, { 'w-full': !relative }]" :style="`background: ${color};`">
     <slot></slot>
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script>
 export default {
   data: () => ({
-    classes: ['rounded-lg', 'w-full'],
+    classes: ['rounded-lg'],
     defaultShaddow: 'shadow-sm',
   }),
   props: {
@@ -18,6 +18,10 @@ export default {
     color: {
       type: String,
       default: 'var(--bg-card-default)',
+    },
+    relative: {
+      type: Boolean,
+      default: false,
     },
   },
   watch: {

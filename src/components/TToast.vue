@@ -2,10 +2,9 @@
   <Transition>
     <TCard
       class="absolute p-2 right-3 bottom-3 shadow-md"
+      relative
       v-if="active"
-      :style="`color: ${toasted.color ?? '#000000'}; background-color: ${
-        toasted.back ? toasted.back : '#FFFFFFF'
-      } !important;`"
+      :style="`color: ${toasted.color ?? '#000000'}; background-color: ${toasted.back ? toasted.back : '#FFFFFFF'} !important;`"
     >
       <TIcon :name="toasted.icon ? toasted.icon : 'fa-wine-glass-alt'" solid />
       <span class="mx-2"> {{ toasted.text }} </span>

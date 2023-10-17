@@ -14,6 +14,10 @@
       { 'w-10/12': t10 },
       { 'w-11/12': t11 },
       { 'w-full': t12 },
+      { flex: left || right || center },
+      { 'justify-start': left },
+      { 'justify-center': center },
+      { 'justify-end': right },
     ]"
   >
     <slot></slot>
@@ -35,6 +39,9 @@ export default {
     t10: Boolean,
     t11: Boolean,
     t12: Boolean,
+    left: Boolean,
+    right: Boolean,
+    center: Boolean,
   },
   data: () => ({
     classes: ['p-2'],
