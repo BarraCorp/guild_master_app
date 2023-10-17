@@ -17,13 +17,13 @@
       <TSideBar v-if="navbar">
         <template #content>
           <div v-for="(menu, j) in menuModel" :key="j">
-            <TButton @click="menu.status = !menu.status" block class="mb-1 flex bg-indigo-800 hover:bg-indigo-900">
+            <TButton @click="menu.status = !menu.status" block dark normal class="mb-1 flex">
               <div class="flex-grow">{{ menu.category }}</div>
               <TIcon :name="menu.status ? 'fa-caret-up' : 'fa-caret-down'" class="w-4 mr-2 fa-sm" solid />
             </TButton>
             <Transition>
               <div v-if="menu.status">
-                <TButton v-for="(item, i) in menu.menus" :key="i" :to="item.to" block class="mb-1 bg-indigo-800 hover:bg-indigo-900">
+                <TButton v-for="(item, i) in menu.menus" :key="i" :to="item.to" block dark normal class="mb-1">
                   <TIcon :name="item.icon" class="mr-2 fa-sm" solid />{{ item.text }}
                 </TButton>
               </div>
@@ -31,7 +31,9 @@
           </div>
         </template>
         <template #footer>
-          <TButton block class="text-center" @click="logoff()"> Sair <TIcon name="fa-right-from-bracket" class="ml-2 fa-sm" solid /></TButton>
+          <TButton block dark normal class="text-center" @click="logoff()">
+            Sair <TIcon name="fa-right-from-bracket" class="ml-2 fa-sm" solid
+          /></TButton>
         </template>
       </TSideBar>
       <TContent class="p-4">

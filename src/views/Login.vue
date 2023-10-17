@@ -8,7 +8,7 @@
         <h1 class="text-3xl mb-3">Login</h1>
         <TInput v-model="object.email" class="mb-3" placeholder="usuario@email.com" />
         <TInput v-model="object.password" class="mb-3" password />
-        <TButton block class="text-center mb-2" @click="login()">Logar</TButton>
+        <TButton block normal dark class="text-center mb-2" @click="login()">Logar</TButton>
       </TCard>
     </TCol>
   </div>

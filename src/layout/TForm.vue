@@ -8,11 +8,11 @@
           <TBreadcrumb :list="config.breadcrumb" class="my-4" />
         </div>
         <div class="text-right flex">
-          <TButton class="px-3 mr-2 bg-indigo-800 hover:bg-indigo-900 text-white" @click="back()">
+          <TButton class="px-3 mr-2" @click="back()" dark normal>
             <TIcon name="fa-angles-left fa-sm mr-2" regular />
             Voltar
           </TButton>
-          <TButton @click="save()" class="px-3 bg-indigo-800 hover:bg-indigo-900 text-white">
+          <TButton @click="save()" class="px-3" dark normal>
             <TIcon solid name="fas fa-save" class="mr-2" />
             Salvar
           </TButton>
@@ -40,11 +40,11 @@
         </div>
       </div>
       <div class="text-right flex">
-        <TButton class="px-3 mr-2 bg-indigo-800 hover:bg-indigo-900 text-white" @click="back()">
+        <TButton class="px-3 mr-2" @click="back()" dark normal>
           <TIcon name="fa-angles-left fa-sm mr-2 " regular />
           Voltar
         </TButton>
-        <TButton @click="save()" class="px-3 bg-indigo-800 hover:bg-indigo-900 text-white">
+        <TButton @click="save()" class="px-3" dark normal>
           <TIcon solid name="fas fa-save" class="mr-2" />
           Salvar
         </TButton>

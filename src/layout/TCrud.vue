@@ -20,7 +20,14 @@
     </div>
     <div class="flex-grow">
       <Transition>
-        <TTable :headers="headers" :items="items" class="h-full" :loading="loading" :trClasses="['bg-gray-200']" :tdClasses="['hover:bg-gray-100']">
+        <TTable
+          :headers="headers"
+          :items="items"
+          class="h-full"
+          :loading="loading"
+          :trClasses="['bg-gray-200']"
+          :tdClasses="['hover:bg-gray-100']"
+        >
           <template v-for="head in config.headers" #[`item-${head.value}`]="{ item }">
             <slot :name="`item-${head.value}`" v-bind="{ item, head }"></slot>
           </template>
@@ -31,16 +38,16 @@
               <div class="absolute right-8 sub-menu">
                 <TCard class="fh-full p-2 shadow-md">
                   <div v-for="(sub, j) in config.children" :key="j">
-                    <TButton class="px-3 mb-2 bg-indigo-800 hover:bg-indigo-900 text-white" @click="subRoute(item.id, sub)" block>
+                    <TButton class="px-3 mb-2" @click="subRoute(item.id, sub)" block dark normal>
                       <TIcon :name="`${sub.icon} fa-sm mr-1`" regular v-if="sub.icon" />
                       {{ sub.name }}
                     </TButton>
                   </div>
-                  <TButton class="px-3 mb-2 bg-indigo-800 hover:bg-indigo-900 text-white" @click="edit(item.id)" block>
+                  <TButton class="px-3 mb-2" @click="edit(item.id)" block dark normal>
                     <TIcon name="fa-pen-to-square fa-sm mr-1" regular />
                     Editar
                   </TButton>
-                  <TButton class="px-3 bg-indigo-800 hover:bg-indigo-900 text-white" @click="remove(item.id)" block>
+                  <TButton class="px-3" @click="remove(item.id)" block dark normal>
                     <TIcon name="fa-eraser fa-sm mr-1" regular />
                     Excluir
                   </TButton>

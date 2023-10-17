@@ -1,5 +1,14 @@
 <template>
-  <div :class="[...classes, { 'inline-flex': !block }]" @click="action">
+  <div
+    :class="[
+      ...classes,
+      { 'inline-flex': !block },
+      { 'bg-indigo-800 hover:bg-indigo-900': normal },
+      { 'text-white': dark },
+      { 'text-black': !dark },
+    ]"
+    @click="action"
+  >
     <slot></slot>
   </div>
 </template>
@@ -15,6 +24,8 @@ export default {
       type: Boolean,
       default: false,
     },
+    normal: Boolean,
+    dark: Boolean,
   },
   data: () => ({
     classes: ['items-center', 'p-2', 'cursor-pointer', 'rounded-lg', 'group', 'sidebar-tbutton'],
