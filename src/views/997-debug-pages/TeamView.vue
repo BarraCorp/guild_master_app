@@ -3,7 +3,12 @@
     <div class="flex-grow p-5 flex-wrap">
       <div class="flex w-full mb-5 items-center">
         <div class="p-2">
-          <div class="w-16 h-16 rounded-full" style="background: url(https://i.imgur.com/yjoYqzG.png) center center; background-size: cover"></div>
+          <div
+            class="w-16 h-16 rounded-full"
+            :style="`background: url(${
+              team.url ?? 'https://i.imgur.com/yjoYqzG.png'
+            }) center center; background-size: cover`"
+          ></div>
         </div>
         <div class="px-4 w-3/12 border-r border-zinc-800">
           <p class="text-3xl font-bold text-yellow-400 uppercase">{{ team.name }}</p>
@@ -25,13 +30,14 @@
         </div>
       </div>
 
+      <TLoadingBar v-if="loading" />
+
       <div class="w-9/12">
         <p class="font-bold text-yellow-400 uppercase my-5">Integrantes do Time</p>
         <TTable
           :items="members"
           :headers="headers"
           class="w-full border-zinc-800"
-          :loading="loading"
           :trClasses="['bg-stone-800', 'text-yellow-400', 'border-zinc-800']"
           :tdClasses="['hover:bg-stone-700', 'border-zinc-800']"
         >
@@ -67,7 +73,7 @@
           <TPagination v-model="page" :config="pageConfig" v-if="!loading" />
         </div>
       </div>
-      <div class="w-3/12 flex"></div>
+      <div class="w-3/12"></div>
     </div>
   </div>
 </template>
@@ -84,21 +90,33 @@ export default {
       { text: 'Facção', value: 'faction' },
       { text: 'Classe', value: 'idClass' },
       { text: 'Raça', value: 'idRace' },
+      { text: 'Função', value: 'specRole' },
       { text: 'Item Level', value: 'equippedItemLevel' },
     ],
+    pageConfig: {},
+    perPage: 12,
+    page: 1,
+    loading: false,
   }),
   methods: {
     async loadTeam() {
       if (this.$route.params && this.$route.params.id) {
+        this.loading = true
         const raw = await this.$crud.get('team', { params: { ...this.$route.params } })
         if (raw.data) {
           this.team = raw.data[0]
         }
 
-        const raw2 = await this.$crud.get('teamMember', { params: { idTeam: this.$route.params.id } })
+        const raw2 = await this.$crud.get('teamMember', {
+          params: { idTeam: this.$route.params.id, limit: this.perPage, page: this.page },
+        })
         if (raw2.data) {
           this.members = raw2.data
         }
+
+        this.pageConfig = { total: raw2.total, actual: raw2.actualPage, perPage: this.perPage }
+
+        this.loading = false
       }
     },
     add() {

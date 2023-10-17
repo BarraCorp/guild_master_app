@@ -1,5 +1,5 @@
 <template>
-  <div :class="[...classes, { 'w-full': !relative }]" :style="`background: ${color};`">
+  <div :class="[...classes, { 'w-full': !relative }]">
     <slot></slot>
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script>
 export default {
   data: () => ({
-    classes: ['rounded-lg'],
+    classes: ['rounded-lg', 'bg-white'],
     defaultShaddow: 'shadow-sm',
   }),
   props: {

@@ -4,7 +4,12 @@
       <!-- <div class="flex-grow cursor-pointer" @click="open = !open">
         {{ rawText ? rawText : placeholder }}
       </div> -->
-      <input class="border-none focus:outline-none flex-grow cursor-pointer fake-select" v-model="search" :placeholder="rawPlaceholder" @click="open = !open" />
+      <input
+        class="border-none focus:outline-none flex-grow cursor-pointer fake-select"
+        v-model="search"
+        :placeholder="rawPlaceholder"
+        @click="open = !open"
+      />
       <div class="px-2">
         <TIcon :name="[{ 'fa-angles-down': !open }, { 'fa-angles-up': open }, 'fa-sm']" regular @click="open = !open" />
         <TIcon name="fa-user fa-xmark" v-if="raw" @click="clear" button regular />
@@ -12,7 +17,12 @@
     </div>
     <Transition>
       <TCard class="w-full shadow-md absolute mt-1 top-full z-10 overflow-y-scroll max-h-40" v-if="open">
-        <div v-for="(item, i) in computedItems" :key="i" class="hover:bg-gray-50 border-b p-2 cursor-pointer" @click="setValue(item)">
+        <div
+          v-for="(item, i) in computedItems"
+          :key="i"
+          class="hover:bg-gray-50 border-b p-2 cursor-pointer"
+          @click="setValue(item)"
+        >
           <span v-if="typeof item === 'object' && item !== null">
             {{ getText(item) }}
           </span>
@@ -36,6 +46,7 @@ export default {
     items: Array,
     itemText: String,
     itemValue: String,
+    change: Function,
   },
   data: () => ({
     raw: null,
@@ -58,6 +69,7 @@ export default {
   watch: {
     raw() {
       this.$emit('update:modelValue', this.raw)
+      this.$emit('change', this.change)
     },
     modelValue(newVal) {
       if (newVal != this.raw) {

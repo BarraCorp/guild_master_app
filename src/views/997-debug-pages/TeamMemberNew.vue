@@ -1,5 +1,5 @@
 <template>
-  <TCard class="flex flex-col h-full p-4 shadow-md" color="#292524">
+  <TCard class="flex flex-col h-full p-4 shadow-md bg-stone-800">
     <TLoadingBar v-if="loading" />
     <div v-for="(item, i) in form" :key="i">
       <div class="flex content-center items-center">
@@ -19,26 +19,25 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap border-t border-b py-4 my-4">
-        <div v-for="(field, j) in item.children" :key="j" :class="field.classes + ' p-1'">
-          <div class="mb-2 ml-2">
-            <b>{{ field.label }}</b>
-          </div>
-          <TInput v-model="object[field.name]" :placeholder="field.placeholder" v-if="field.type === 1" />
+      <TRow class="mb-5">
+        <TCol t9>
+          <p>Membro</p>
+          <TSelect v-model="object.idMember" :items="members" itemValue="id" itemText="name" @change="getCharacter()" />
+          {{ object.idMember }}
+        </TCol>
+        <TCol t9>
+          {{ characters }}
+          <p>Membro</p>
+          <TSelect v-model="object.idCharacter" :items="characters" itemValue="id" itemText="name" />
+        </TCol>
+      </TRow>
+
+      <!-- 
+      <TInput v-model="object[field.name]" :placeholder="field.placeholder" v-if="field.type === 1" />
           <TInput v-model="object[field.name]" :placeholder="field.placeholder" password v-if="field.type === 2" />
 
-          <TCheckbox v-model="object[field.name]" :placeholder="field.placeholder" v-if="field.type === 3" />
+          <TCheckbox v-model="object[field.name]" :placeholder="field.placeholder" v-if="field.type === 3" /> -->
 
-          <TSelect
-            v-model="object[field.name]"
-            :placeholder="field.placeholder"
-            :items="field.database"
-            v-if="field.type === 4"
-            :itemValue="field.itemValue ? field.itemValue : 'id'"
-            :itemText="field.itemKey ? field.itemKey : 'name'"
-          />
-        </div>
-      </div>
       <div class="text-right flex">
         <TButton class="px-3 mr-2 shadow bg-yellow-400 hover:bg-yellow-600 text-gray-900" @click="back()">
           <TIcon name="fa-angles-left fa-sm mr-2 " regular />
@@ -69,6 +68,8 @@ export default {
     object: {},
     items: [],
     test: null,
+    members: [],
+    characters: [],
   }),
   methods: {
     async start() {
@@ -80,13 +81,18 @@ export default {
         this.$store.dispatch('setUserInfo', null)
       }
       this.form = res.data
-      // if (this.$route.params && this.$route.params.id) {
-      //   const raw = await this.$crud.get('teamMember', { params: { ...this.$route.params } })
-      //   if (raw.data) {
-      //     this.object = raw.data[0]
-      //   }
-      // }
+      const res2 = await this.$crud.get('member', { params: { idFather: this.$route.params.idFather } })
+      this.members = res2.data
+      this.loading = false
     },
+    async getCharacter() {
+      console.log('aw')
+      this.loading = true
+      const res2 = await this.$crud.get('character', { params: { idFather: this.object.idMember } })
+      this.characters = res2.data
+      this.loading = false
+    },
+
     async save() {
       let res = null
       if (this.$route.params.idFather) {

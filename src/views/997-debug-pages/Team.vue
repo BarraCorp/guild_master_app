@@ -12,10 +12,17 @@
       </TCol>
     </TRow>
 
+    <TLoadingBar v-if="loading" />
+
     <TRow>
       <TCol t3 v-for="(item, i) in teams" :key="i" class="mx-2">
-        <TCard color="#292524" class="overflow-hidden shadow">
-          <div class="w-full h-64" :style="`background: url(${item.url ?? 'https://i.imgur.com/yjoYqzG.png'}) center center; background-size: cover`"></div>
+        <TCard class="overflow-hidden shadow bg-stone-800 hover:bg-stone-950">
+          <div
+            class="w-full h-64"
+            :style="`background: url(${
+              item.url ?? 'https://i.imgur.com/yjoYqzG.png'
+            }) center center; background-size: cover`"
+          ></div>
           <div class="px-2 p-4">
             <p class="text-3xl mb-2 font-bold text-yellow-400 text-center">{{ item.name }}</p>
             <p class="text-center">{{ item.description }}</p>
@@ -28,7 +35,10 @@
                 <TIcon name="fa-star" regular class="mr-2" />
               </TCol>
               <TCol t6 right>
-                <TButton class="shadow bg-yellow-400 hover:bg-yellow-600 text-gray-900 font-bold" @click="edit(item.id)">
+                <TButton
+                  class="shadow bg-yellow-400 hover:bg-yellow-600 text-gray-900 font-bold"
+                  @click="edit(item.id)"
+                >
                   <TIcon name="fa-gears" solid class="mr-2" />
                   Gerenciar
                 </TButton>
@@ -90,10 +100,13 @@ export default {
         ],
       },
     ],
+    loading: false,
   }),
   methods: {
     async loadTeams() {
+      this.loading = true
       const res = await this.$crud.get('team')
+      this.loading = false
       this.teams = res.data
     },
     add() {

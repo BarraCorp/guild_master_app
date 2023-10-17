@@ -10,15 +10,17 @@
       </THeadBar>
       <div class="flex">
         <div class="w-80 min-w-64 h-full p-5">
-          <TCard color="#292524" class="h-full p-2">
+          <TCard class="h-full p-2 bg-stone-800">
             <div v-for="(menu, j) in menuModel" :key="j">
-              <TButton @click="menu.status = !menu.status" block class="mb-1 flex">
+              <TButton @click="menu.status = !menu.status" block dark class="mb-1 flex">
                 <div class="flex-grow">{{ menu.category }}</div>
                 <TIcon :name="menu.status ? 'fa-caret-up' : 'fa-caret-down'" class="w-4 mr-2 fa-sm" solid />
               </TButton>
               <Transition>
                 <div v-if="menu.status">
-                  <TButton v-for="(item, i) in menu.menus" :key="i" :to="item.to" block class="mb-1"> <TIcon :name="item.icon" class="mr-2 fa-sm" solid />{{ item.text }} </TButton>
+                  <TButton v-for="(item, i) in menu.menus" :key="i" :to="item.to" block dark class="mb-1">
+                    <TIcon :name="item.icon" class="mr-2 fa-sm" solid />{{ item.text }}
+                  </TButton>
                 </div>
               </Transition>
             </div>
