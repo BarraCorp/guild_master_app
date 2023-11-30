@@ -3,6 +3,7 @@ import App from './App.vue'
 
 import './assets/tailwind.css'
 import './assets/tstyles.css'
+import './assets/venus.css'
 
 import './assets/fa/css/fontawesome.css'
 import './assets/fa/css/brands.css'

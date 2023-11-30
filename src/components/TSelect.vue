@@ -1,9 +1,6 @@
 <template>
   <div class="border focus:border-indigo-800 hover:border-indigo-600 bg-white text-black rounded-lg w-full relative">
     <div class="border-none focus:outline-none w-full p-1 m-1 flex">
-      <!-- <div class="flex-grow cursor-pointer" @click="open = !open">
-        {{ rawText ? rawText : placeholder }}
-      </div> -->
       <input
         class="border-none focus:outline-none flex-grow cursor-pointer fake-select"
         v-model="search"
@@ -23,11 +20,8 @@
           class="hover:bg-gray-50 border-b p-2 cursor-pointer"
           @click="setValue(item)"
         >
-          <span v-if="typeof item === 'object' && item !== null">
+          <span>
             {{ getText(item) }}
-          </span>
-          <span v-else>
-            {{ item }}
           </span>
         </div>
       </TCard>

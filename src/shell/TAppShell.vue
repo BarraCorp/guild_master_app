@@ -1,9 +1,9 @@
 <template>
   <TApp>
-    <THeadBar>
+    <THeadBar class="bg-zinc-900 text-white">
       <div class="flex content-center items-center">
         <div class="w-2 px-4">
-          <TIcon name="fa-bars" color="black" regular button @click="navbar = !navbar" />
+          <TIcon name="fa-bars" regular button @click="navbar = !navbar" />
         </div>
         <div class="flex-grow px-4">
           <img src="@/assets/logo-venus.png" class="h-16" />
@@ -36,7 +36,7 @@
           /></TButton>
         </template>
       </TSideBar>
-      <TContent class="p-4">
+      <TContent class="p-4 bg-orange-950">
         <slot></slot>
       </TContent>
     </TMain>

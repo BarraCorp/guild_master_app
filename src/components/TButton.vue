@@ -3,7 +3,7 @@
     :class="[
       ...classes,
       { 'inline-flex': !block },
-      { 'bg-indigo-800 hover:bg-indigo-900': normal },
+      { 'bg-red-700 hover:bg-red-800 font-square': normal },
       { 'text-white': dark },
       { 'text-black': !dark },
     ]"

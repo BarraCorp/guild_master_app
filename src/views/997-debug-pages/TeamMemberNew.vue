@@ -23,14 +23,16 @@
         <TCol t9>
           <p>Membro</p>
           <TSelect v-model="object.idMember" :items="members" itemValue="id" itemText="name" @change="getCharacter()" />
-          {{ object.idMember }}
         </TCol>
         <TCol t9>
-          {{ characters }}
-          <p>Membro</p>
+          <p>Personagens</p>
           <TSelect v-model="object.idCharacter" :items="characters" itemValue="id" itemText="name" />
         </TCol>
       </TRow>
+
+      <div v-for="(item, i) in characters" :key="i">
+        {{ item.id }}
+      </div>
 
       <!-- 
       <TInput v-model="object[field.name]" :placeholder="field.placeholder" v-if="field.type === 1" />
@@ -88,7 +90,7 @@ export default {
     async getCharacter() {
       console.log('aw')
       this.loading = true
-      const res2 = await this.$crud.get('character', { params: { idFather: this.object.idMember } })
+      const res2 = await this.$crud.get('character', { params: { idMember: this.object.idMember } })
       this.characters = res2.data
       this.loading = false
     },
