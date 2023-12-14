@@ -33,27 +33,24 @@
           </template>
 
           <template #item-action="{ item }">
-            <div class="exibe-menu">
-              <TIcon name="fa-bars" color="black" regular button @click="item.id" />
-              <div class="absolute right-8 sub-menu">
-                <TCard class="fh-full p-2 shadow-md">
-                  <div v-for="(sub, j) in config.children" :key="j">
-                    <TButton class="px-3 mb-2" @click="subRoute(item.id, sub)" block dark normal>
-                      <TIcon :name="`${sub.icon} fa-sm mr-1`" regular v-if="sub.icon" />
-                      {{ sub.name }}
-                    </TButton>
-                  </div>
-                  <TButton class="px-3 mb-2" @click="edit(item.id)" block dark normal>
-                    <TIcon name="fa-pen-to-square fa-sm mr-1" regular />
-                    Editar
-                  </TButton>
-                  <TButton class="px-3" @click="remove(item.id)" block dark normal>
-                    <TIcon name="fa-eraser fa-sm mr-1" regular />
-                    Excluir
-                  </TButton>
-                </TCard>
-              </div>
-            </div>
+            <TButton
+              dark
+              icon
+              normal
+              class="mr-1"
+              v-for="(sub, j) in config.children"
+              :key="j"
+              @click="subRoute(item.id, sub)"
+            >
+              <TIcon :name="`${sub.icon} fa-sm`" regular v-if="sub.icon" />
+            </TButton>
+
+            <TButton dark icon normal class="mr-1" @click="edit(item.id)">
+              <TIcon name="fa-pen-to-square fa-sm" regular />
+            </TButton>
+            <TButton dark icon normal class="mr-1" @click="remove(item.id)">
+              <TIcon name="fa-eraser fa-sm" regular />
+            </TButton>
           </template>
         </TTable>
       </Transition>
@@ -112,7 +109,7 @@ export default {
             return el.value === 'action'
           })
         ) {
-          this.headers.push({ text: 'Ações', value: 'action', classes: 'w-8 text-center' })
+          this.headers.push({ text: 'Ações', value: 'action', classes: 'text-center' })
         }
         this.pageConfig = { total: res.total, actual: res.actualPage, perPage: this.perPage }
       }
@@ -159,15 +156,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.exibe-menu {
-  display: relative;
-}
-.exibe-menu:hover .sub-menu {
-  display: block;
-}
-.sub-menu {
-  display: none;
-}
-</style>

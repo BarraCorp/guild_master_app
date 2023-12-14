@@ -17,6 +17,17 @@ const routes = [
     name: 'Login',
     component: () => import('../views/Login.vue'),
   },
+  {
+    path: '/register',
+    name: 'Register',
+    component: () => import('../views/Register.vue'),
+  },
+  {
+    path: '/rescue',
+    name: 'Rescue',
+    component: () => import('../views/RescuePassword.vue'),
+  },
+
   // Raças
   {
     path: '/race',

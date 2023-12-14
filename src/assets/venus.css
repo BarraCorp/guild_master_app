@@ -1,3 +1,13 @@
 .font-square{
     font-family: 'Nova Square', sans-serif !important;
 }
+
+.bg-custom-1{
+    background-color: #2b1d1c;
+}
+.bg-custom-2{
+    background-color: #1e1414;
+}
+.bg-custom-3{
+    background-color: #402d29;
+}

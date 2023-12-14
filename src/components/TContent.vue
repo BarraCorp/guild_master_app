@@ -7,13 +7,7 @@
 <script>
 export default {
   data: () => ({
-    classes: ['flex-grow', 'tcontent'],
+    classes: ['flex-grow'],
   }),
 }
 </script>
-
-<style>
-.tcontent {
-  background: var(--content-bg-color);
-}
-</style>

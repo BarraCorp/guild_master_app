@@ -1,12 +1,13 @@
 <template>
   <TApp>
-    <THeadBar class="bg-zinc-900 text-white">
+    <THeadBar class="bg-custom-1 text-white">
       <div class="flex content-center items-center">
         <div class="w-2 px-4">
           <TIcon name="fa-bars" regular button @click="navbar = !navbar" />
         </div>
         <div class="flex-grow px-4">
-          <img src="@/assets/logo-venus.png" class="h-16" />
+          <!-- <img src="@/assets/logo-venus.png" class="h-16" /> -->
+          <h1 class="text-3xl mx-4 font-square font-extrabold text-yellow-400">Guild Pro Admin</h1>
         </div>
         <div class="w-2/12 p-4 text-right">
           <slot name="header-right"></slot>
@@ -14,16 +15,23 @@
       </div>
     </THeadBar>
     <TMain>
-      <TSideBar v-if="navbar">
+      <TSideBar v-if="navbar" class="bg-custom-2">
         <template #content>
           <div v-for="(menu, j) in menuModel" :key="j">
-            <TButton @click="menu.status = !menu.status" block dark normal class="mb-1 flex">
+            <TButton @click="menu.status = !menu.status" block dark class="mb-1 flex hover:bg-amber-500">
               <div class="flex-grow">{{ menu.category }}</div>
               <TIcon :name="menu.status ? 'fa-caret-up' : 'fa-caret-down'" class="w-4 mr-2 fa-sm" solid />
             </TButton>
             <Transition>
               <div v-if="menu.status">
-                <TButton v-for="(item, i) in menu.menus" :key="i" :to="item.to" block dark normal class="mb-1">
+                <TButton
+                  v-for="(item, i) in menu.menus"
+                  :key="i"
+                  :to="item.to"
+                  block
+                  dark
+                  class="mb-1 hover:bg-amber-500"
+                >
                   <TIcon :name="item.icon" class="mr-2 fa-sm" solid />{{ item.text }}
                 </TButton>
               </div>
@@ -36,7 +44,7 @@
           /></TButton>
         </template>
       </TSideBar>
-      <TContent class="p-4 bg-orange-950">
+      <TContent class="p-4 bg-custom-3">
         <slot></slot>
       </TContent>
     </TMain>

@@ -25,7 +25,7 @@ export default {
   data: () => ({
     raw: [],
     rawHeader: [],
-    tableClassRaw: ['relative', 'overflow-x-auto', 'rounded-lg', 'border', 'w-full', 'text-sm'],
+    tableClassRaw: ['relative', 'rounded-lg', 'border', 'w-full', 'text-sm'],
     trClassesRaw: ['text-gray-800', 'uppercase', 'border-b', 'text-xs'],
     tdClassesRaw: ['border-b'],
   }),

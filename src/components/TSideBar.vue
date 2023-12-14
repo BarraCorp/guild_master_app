@@ -1,5 +1,5 @@
 <template>
-  <aside :class="[...classes]" aria-label="Sidebar" :style="`background: var(--bg-color);`">
+  <aside :class="[...classes]" aria-label="Sidebar">
     <div class="flex-grow">
       <slot name="content"></slot>
     </div>

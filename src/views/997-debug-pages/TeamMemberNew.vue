@@ -88,7 +88,6 @@ export default {
       this.loading = false
     },
     async getCharacter() {
-      console.log('aw')
       this.loading = true
       const res2 = await this.$crud.get('character', { params: { idMember: this.object.idMember } })
       this.characters = res2.data
