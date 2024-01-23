@@ -7,7 +7,7 @@
 <script>
 export default {
   data: () => ({
-    classes: ['rounded-lg', 'bg-white'],
+    classes: ['rounded-lg'],
     defaultShaddow: 'shadow-sm',
   }),
   props: {

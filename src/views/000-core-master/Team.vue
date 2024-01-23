@@ -22,7 +22,7 @@
             :style="`background: url(${
               item.url ?? 'https://i.imgur.com/yjoYqzG.png'
             }) center center; background-size: cover`"
-          ></div>
+          />
           <div class="px-2 p-4">
             <p class="text-3xl mb-2 font-bold text-yellow-400 text-center">{{ item.name }}</p>
             <p class="text-center">{{ item.description }}</p>
@@ -54,6 +54,7 @@
 <script>
 export default {
   data: () => ({
+    // FIX remover config após adaptar
     config: {
       head: 'Times',
       breadcrumb: [{ text: 'Home' }, { text: 'Corer' }, { text: 'Times' }],

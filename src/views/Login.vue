@@ -1,17 +1,23 @@
 <template>
-  <div class="flex content-center items-center justify-center h-screen bg-stone-900">
+  <div class="flex content-center items-center justify-center h-screen bg-stone-900 text-white">
     <TCol t3>
-      <TCard :class="['p-4', { tremor: buzz }]">
-        <div class="flex justify-center mb-10"></div>
-        <h1 class="text-3xl mb-5 font-square font-extrabold text-center">Bem Vindo</h1>
+      <TCard :class="['p-4', 'bg-custom-3', { tremor: buzz }]">
+        <div class="flex justify-center mb-5">Projeto Guild Roster Manager Logo</div>
+        <!-- <h1 class="text-2xl mb-10 font-square font-extrabold">Bem Vindo</h1> -->
+        <h2 class="text-2xl mb-5 font-square font-extrabold text-center">Login</h2>
         <TInput v-model="object.email" class="mb-3" placeholder="usuario@email.com" />
-        <TInput v-model="object.password" class="mb-3" password />
+        <TInput v-model="object.password" class="mb-5" password />
+        <div class="text-right mb-5">
+          <router-link to="/rescue" class="font-bold text-amber-500 hover:text-amber-600">Esqueci a Senha</router-link>
+        </div>
 
-        <TButton block normal dark class="text-center mb-2" @click="login()">Logar</TButton>
-        <TRow class="mt-4">
-          <TCol t6><router-link to="/rescue">Esqueci a Senha</router-link></TCol>
-          <TCol t6 class="text-right"><router-link to="/register">Registrar</router-link></TCol>
-        </TRow>
+        <TButton block normal dark class="text-center mb-5" @click="login()">Logar</TButton>
+
+        <div class="text-center mb-5">
+          <router-link to="/register" class="font-bold text-amber-500 hover:text-amber-600">
+            Criar uma Conta
+          </router-link>
+        </div>
       </TCard>
     </TCol>
   </div>
